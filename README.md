@@ -2,7 +2,7 @@
 Laravel Multiple Authentication
 
 
-Step 1 : set your route: 
+# Step 1 : set your route: 
 
 Auth::routes();
 
@@ -20,7 +20,8 @@ Route::prefix('admin')->group(function() {
 
 
 
-Step 2 : Set Auth guards and providers "Config/auth.php"
+# Step 2 : Set Auth guards and providers "Config/auth.php"
+  
   'guards' => [
         'web' => [
             'driver' => 'session',
@@ -66,7 +67,7 @@ Step 2 : Set Auth guards and providers "Config/auth.php"
             'expire' => 60,
         ],
     ],
-Step 3 : Migrate Admins Table 
+# Step 3 : Migrate Admins Table 
     Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -77,7 +78,7 @@ Step 3 : Migrate Admins Table
             $table->timestamps();
         });
         
-Step 4 : Controller App\Http\Controller\auth AdminLoginController.php
+# Step 4 : Controller App\Http\Controller\auth AdminLoginController.php
       <?php
 
       namespace App\Http\Controllers\Auth;
@@ -118,7 +119,7 @@ Step 4 : Controller App\Http\Controller\auth AdminLoginController.php
       }
 
 
-Step 5 : Admin Controller App\Http\Controllers AdminController.php
+# Step 5 : Admin Controller App\Http\Controllers AdminController.php
       <?php
 
       namespace App\Http\Controllers;
@@ -153,7 +154,7 @@ Step 5 : Admin Controller App\Http\Controllers AdminController.php
       }
       
       
- Step 6 : Model Set Admin.php
+ # Step 6 : Model Set Admin.php
      <?php
 
       namespace App;
@@ -184,7 +185,7 @@ Step 5 : Admin Controller App\Http\Controllers AdminController.php
           ];
       }
 
-Step 7 : Set Exception App\Exception Handler.php
+# Step 7 : Set Exception App\Exception Handler.php
 
     /* At the Top  */
     use Illuminate\Auth\AuthenticationException;
@@ -210,7 +211,7 @@ Step 7 : Set Exception App\Exception Handler.php
         return redirect()->guest(route($login));
     }
     
- Step 8 : Middleware App\Http\Middleware  RedirectIfAuthenticated.php
+ # Step 8 : Middleware App\Http\Middleware  RedirectIfAuthenticated.php
  
     switch ($guard) {
         case 'admin':
